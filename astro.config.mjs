@@ -1,7 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import UnoCSS from "@unocss/astro";
 
-import vue from "@astrojs/vue";
 import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
@@ -11,11 +12,12 @@ export default defineConfig({
     format: "file",
   },
   outDir: "./templates",
-  integrations: [vue()],
+  integrations: [react(), UnoCSS()],
   vite: {
     plugins: [
       Icons({
-        compiler: "vue3",
+        compiler: "jsx",
+        jsx: "react",
       }),
     ],
   },

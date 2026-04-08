@@ -7,15 +7,21 @@ import Layout from "../layouts/Layout.astro";
     <title th:text="|分类 - ${site.title}|"></title>
   </Fragment>
 
-  <nav class="taxonomy-list" aria-label="Category list">
-    <div th:each="category : ${categories}" class="taxonomy-list__item">
+  <nav class="grid gap-3" aria-label="Category list">
+    <div
+      th:each="category : ${categories}"
+      class="flex items-center justify-between gap-4 rounded-[12px] border border-[var(--rule)] bg-[color-mix(in_srgb,var(--bg)_92%,var(--bg-raised)_8%)] px-4 py-3"
+    >
       <a
-        class="taxonomy-list__link"
+        class="min-w-0 text-[1rem] font-medium text-[var(--ink)] no-underline transition-colors duration-150 ease-in-out hover:text-[var(--accent)]"
         th:href="@{${category.status.permalink}}"
         th:text="${category.spec.displayName}"
       >
       </a>
-      <span class="taxonomy-list__count" th:text="|${category.postCount} 篇|">
+      <span
+        class="shrink-0 text-[0.82rem] uppercase tracking-[0.1em] text-[var(--ink-3)]"
+        th:text="|${category.postCount} 篇|"
+      >
       </span>
     </div>
   </nav>

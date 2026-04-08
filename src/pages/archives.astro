@@ -7,29 +7,32 @@ import Layout from "../layouts/Layout.astro";
     <title th:text="|归档 - ${site.title}|"></title>
   </Fragment>
 
-  <section class="archive-list" aria-label="Archive list">
+  <section class="grid gap-10" aria-label="Archive list">
     <th:block th:each="archive : ${archives.items}">
       <th:block th:each="month : ${archive.months}">
-        <div class="archive-group">
+        <div class="grid gap-4">
           <h2
-            class="archive-group__year"
+            class="m-0 text-[1rem] uppercase tracking-[0.16em] text-[var(--ink-3)]"
             th:text="|${archive.year} · ${month.month}|"
           >
           </h2>
-          <ul class="archive-group__items">
-            <li th:each="post : ${month.posts}" class="archive-entry">
+          <ul class="m-0 list-none p-0">
+            <li
+              th:each="post : ${month.posts}"
+              class="grid gap-3 border-t border-[var(--rule)] py-5 first:border-t-0 first:pt-0 md:grid-cols-[80px_minmax(0,1fr)] md:gap-6"
+            >
               <span
-                class="archive-entry__date"
+                class="pt-1 text-[0.8rem] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
                 th:text="${#dates.format(post.spec.publishTime, 'MM/dd')}"
               ></span>
               <div>
-                <h3 class="archive-entry__title">
+                <h3 class="m-0 text-[1.1rem] leading-[1.35]">
                   <a
                     th:href="@{${post.status.permalink}}"
                     th:text="${post.spec.title}"></a>
                 </h3>
                 <p
-                  class="archive-entry__summary"
+                  class="mt-2 text-[0.95rem] leading-[1.6] text-[var(--ink-2)]"
                   th:text="${post.status.excerpt}"
                 >
                 </p>
@@ -39,27 +42,33 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </th:block>
     </th:block>
-
-    <div th:if="${archives.total == 0}" class="archive-empty">暂无文章。</div>
+    <div
+      th:if="${archives.total == 0}"
+      class="rounded-[12px] border border-dashed border-[var(--rule)] bg-[color-mix(in_srgb,var(--bg)_88%,var(--bg-raised)_12%)] px-5 py-6 text-[0.95rem] text-[var(--ink-2)]"
+    >
+      暂无文章。
+    </div>
   </section>
 
   <nav
     th:if="${archives.totalPages gt 1}"
-    class="pagination"
+    class="mt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--rule)] pt-6"
     aria-label="Pagination"
   >
     <a
       th:if="${archives.hasPrevious()}"
       th:href="@{${archives.prevUrl}}"
-      class="pagination__prev">&larr; 较新</a
+      class="inline-flex items-center gap-2 rounded-[8px] px-3 py-2 text-[0.92rem] font-medium text-[var(--ink-2)] no-underline transition-colors duration-150 ease-in-out hover:bg-[var(--bg-raised)] hover:text-[var(--ink)]"
+      >&larr; 较新</a
     >
     <span
-      class="pagination__info"
+      class="text-[0.82rem] uppercase tracking-[0.12em] text-[var(--ink-3)]"
       th:text="|${archives.page} / ${archives.totalPages}|"></span>
     <a
       th:if="${archives.hasNext()}"
       th:href="@{${archives.nextUrl}}"
-      class="pagination__next">较旧 &rarr;</a
+      class="inline-flex items-center gap-2 rounded-[8px] px-3 py-2 text-[0.92rem] font-medium text-[var(--ink-2)] no-underline transition-colors duration-150 ease-in-out hover:bg-[var(--bg-raised)] hover:text-[var(--ink)]"
+      >较旧 &rarr;</a
     >
   </nav>
 </Layout>

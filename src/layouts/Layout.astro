@@ -33,16 +33,16 @@ const hasHeading = Boolean(pageTitle);
   </head>
   <body>
     <Header />
-    <main class="layout-main">
-      <article class="page-shell">
+    <main class="mx-auto w-[820px] max-w-[calc(100%-2.5rem)] py-12 pb-20">
+      <article class="grid gap-10">
         {
           hasHeading && (
-            <header class="page-heading">
+            <header class="border-b border-[var(--rule)] pb-6">
               {pageTitle && <h1>{pageTitle}</h1>}
             </header>
           )
         }
-        <div class:list={["page-content", contentClass]}>
+        <div class:list={["grid gap-8", contentClass]}>
           <slot />
         </div>
       </article>

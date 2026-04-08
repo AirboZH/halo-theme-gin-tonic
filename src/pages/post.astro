@@ -2,14 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout contentClass="prose">
+<Layout contentClass="prose prose-zinc max-w-none dark:prose-invert">
   <Fragment slot="head">
     <title th:text="|${post.spec.title} - ${site.title}|"></title>
   </Fragment>
 
-  <div class="page-heading">
+  <div class="border-b border-[var(--rule)] pb-6">
     <h1 th:text="${post.spec.title}"></h1>
-    <p class="page-meta">
+    <p
+      class="mb-[0.6rem] flex flex-wrap items-center gap-[0.6rem] text-[0.78rem] uppercase tracking-[0.1em] text-[var(--ink-3)]"
+    >
       <span th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
       ></span>
     </p>

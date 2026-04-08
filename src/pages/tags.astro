@@ -7,15 +7,18 @@ import Layout from "../layouts/Layout.astro";
     <title th:text="|标签 - ${site.title}|"></title>
   </Fragment>
 
-  <div class="tag-cloud" role="list" aria-label="Tag list">
+  <div class="flex flex-wrap gap-3" role="list" aria-label="Tag list">
     <a
       th:each="tag : ${tags}"
-      class="tag-pill"
+      class="inline-flex items-center gap-3 rounded-full border border-[var(--rule)] bg-[color-mix(in_srgb,var(--bg)_88%,var(--bg-raised)_12%)] px-4 py-2 text-[0.95rem] font-medium text-[var(--ink)] no-underline transition-colors duration-150 ease-in-out hover:border-[var(--accent)] hover:text-[var(--accent)]"
       role="listitem"
       th:href="@{${tag.status.permalink}}"
     >
       <span th:text="${tag.spec.displayName}"></span>
-      <span class="tag-pill__count" th:text="${tag.postCount}"></span>
+      <span
+        class="rounded-full bg-[var(--bg-raised)] px-2.5 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[var(--ink-3)]"
+        th:text="${tag.postCount}"
+      ></span>
     </a>
   </div>
 </Layout>

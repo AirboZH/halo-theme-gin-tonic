@@ -1,17 +1,26 @@
-<ul class="post-feed__list" role="list">
-  <li th:each="post : ${posts.items}" class="post-feed__item">
-    <a class="post-feed__link" th:href="@{${post.status.permalink}}">
-      <div class="post-feed__body">
+<ul class="m-0 list-none p-0" role="list">
+  <li th:each="post : ${posts.items}" class="border-t border-[var(--rule)] first:border-t-0">
+    <a
+      class="group grid gap-5 py-8 text-inherit no-underline md:grid-cols-[minmax(0,1fr)_200px] md:items-start md:gap-8"
+      th:href="@{${post.status.permalink}}"
+    >
+      <div class="flex flex-col gap-[0.55rem] self-center">
         <p
-          class="post-feed__date"
+          class="m-0 text-[0.8rem] uppercase tracking-[0.1em] text-[var(--ink-3)]"
           th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
         ></p>
-        <h2 class="post-feed__title" th:text="${post.spec.title}"></h2>
-        <p class="post-feed__excerpt" th:text="${post.status.excerpt}"></p>
+        <h2
+          class="m-0 text-[1.35rem] leading-[1.3] text-[var(--ink)] transition-colors duration-150 ease-in-out group-hover:text-[var(--accent)]"
+          th:text="${post.spec.title}"
+        ></h2>
+        <p
+          class="m-0 text-[0.96rem] leading-[1.6] text-[var(--ink-2)]"
+          th:text="${post.status.excerpt}"
+        ></p>
       </div>
       <img
         th:unless="${#strings.isEmpty(post.spec.cover)}"
-        class="post-feed__image"
+        class="block aspect-[4/3] w-full rounded-[10px] object-cover transition-opacity duration-200 ease-in-out group-hover:opacity-90"
         th:src="${post.spec.cover}"
       />
     </a>

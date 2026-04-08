@@ -25,16 +25,23 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
+    "@astrojs/react": "^5.0.3",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/vue": "^6.0.1",
     "@halo-dev/api-client": "^2.23.0",
+    "@unocss/astro": "^66.6.8",
+    "@unocss/preset-typography": "^66.6.8",
+    "@unocss/preset-wind3": "^66.6.8",
     "astro": "^6.1.4",
     "ky": "^2.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sharp": "^0.34.5",
-    "vue": "^3.5.32"
+    "unocss": "^66.6.8"
   },
   "devDependencies": {
     "@iconify-json/mingcute": "^1.2.7",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1",
     "unplugin-icons": "^23.0.1"
