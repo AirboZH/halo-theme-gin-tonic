@@ -31,7 +31,7 @@
     "@unocss/astro": "^66.6.8",
     "@unocss/preset-typography": "^66.6.8",
     "@unocss/preset-wind3": "^66.6.8",
-    "astro": "^6.1.4",
+    "astro": "^6.1.6",
     "ky": "^2.0.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
